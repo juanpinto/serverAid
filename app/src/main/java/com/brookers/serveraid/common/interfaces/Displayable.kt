@@ -2,6 +2,6 @@ package com.brookers.serveraid.common.interfaces
 
 interface Displayable {
 
-    fun getViewType(): String
+    fun getViewType(): Int
 
 }

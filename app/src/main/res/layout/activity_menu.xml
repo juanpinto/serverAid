@@ -6,15 +6,17 @@
     android:gravity="bottom"
     sothree:umanoDragView="@+id/relativeLayout_details_header"
     sothree:umanoOverlay="true"
-    sothree:umanoPanelHeight="90dp"
-    sothree:umanoParallaxOffset="90dp"
-    sothree:umanoShadowHeight="5dp">
+    sothree:umanoPanelHeight="@dimen/height_order_details_header"
+    sothree:umanoParallaxOffset="@dimen/height_order_details_header"
+    sothree:umanoScrollableView="@+id/recyclerView_order_products"
+    sothree:umanoShadowHeight="@dimen/spacing_micro">
 
     <fragment
         android:id="@+id/fragment_menu"
         android:name="com.brookers.serveraid.menu.MenuFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/height_order_details_header"
         android:background="@android:color/white" />
 
     <fragment

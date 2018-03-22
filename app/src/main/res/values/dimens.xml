@@ -52,4 +52,9 @@
     <dimen name="radius_large">8dp</dimen>
     <dimen name="radius_huge">15dp</dimen>
 
+
+    <!-- custom dimens -->
+
+    <dimen name="height_order_details_header">100dp</dimen>
+
 </resources>

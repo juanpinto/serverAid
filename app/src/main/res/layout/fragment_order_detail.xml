@@ -1,24 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.brookers.serveraid.orderdetails.OrderViewModel" />
+
+    </data>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout_details_header"
-        android:padding="15dp"
-        android:background="@color/colorAccent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
 
-        <TextView
-            android:id="@+id/textView_details_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Title"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout_details_header"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_order_details_header"
+                android:background="@android:color/white"
+                android:focusableInTouchMode="true">
+
+                <EditText
+                    android:id="@+id/textView_details_title"
+                    style="@style/GreenDarkEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Table #1"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_xlarge" />
+
+
+                <TextView
+                    android:id="@+id/textView_details_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_details_title"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="Products added: 12"
+                    android:textColor="@android:color/black" />
+
+
+                <TextView
+                    android:id="@+id/textView_details_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_details_quantity"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:text="Total: 456.19"
+                    android:textColor="@android:color/black" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_order_products"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cardView_container"
+            app:updateData="@{viewModel.orderProducts}" />
+
 
     </RelativeLayout>
 
-
-
-</RelativeLayout>
+</layout>

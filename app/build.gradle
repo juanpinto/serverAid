@@ -6,6 +6,11 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+
+repositories {
+    mavenCentral()
+}
+
 android {
     compileSdkVersion 26
     defaultConfig {

@@ -2,11 +2,14 @@ package com.brookers.serveraid.common
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
+import android.support.v7.app.AppCompatActivity
+import com.brookers.serveraid.ServerAidApplication
+import com.brookers.serveraid.dagger.component.ActivityComponent
+import com.brookers.serveraid.dagger.component.DaggerActivityComponent
 
 
-open class BaseFragmentActivity : FragmentActivity() {
+open class BaseFragmentActivity : AppCompatActivity() {
 
     lateinit var fragmentManager: FragmentManager
 
@@ -20,5 +23,13 @@ open class BaseFragmentActivity : FragmentActivity() {
                 .add(containerId, fragment, fragment.getName())
                 .addToBackStack(fragment.getName())
                 .commit()
+    }
+
+
+
+    fun getComponent(): ActivityComponent {
+        return DaggerActivityComponent.builder()
+                .appComponent(ServerAidApplication.get().appComponent)
+                .build()
     }
 }

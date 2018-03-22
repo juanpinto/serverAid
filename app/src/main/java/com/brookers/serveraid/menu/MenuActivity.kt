@@ -8,6 +8,7 @@ class MenuActivity : BaseFragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //getComponent().inject(this)
         setContentView(R.layout.activity_menu)
     }
 }

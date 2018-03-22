@@ -7,9 +7,7 @@ import kotlin.collections.ArrayList
 
 class AdapterDelegatesManager<T> {
 
-    var delegates: SparseArrayCompat<AdapterDelegate<T>> = SparseArrayCompat()
-
-    var fallbackDelegate: AdapterDelegate<T>? = null
+    private val delegates: SparseArrayCompat<AdapterDelegate<T>> = SparseArrayCompat()
 
     private val payLoadEmptyList: List<Any> = ArrayList()
 
@@ -71,12 +69,12 @@ class AdapterDelegatesManager<T> {
     }
 
 
-    fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
         val delegate = getDelegateForViewType(viewType)
         return delegate.onCreateViewHolder(parent)
     }
 
-    fun onBindViewHolder(items: List<T>, position: Int,
+    private fun onBindViewHolder(items: List<T>, position: Int,
                          viewHolder: RecyclerView.ViewHolder, payloads: List<Any>?) {
 
         val delegate = getDelegateForViewType(viewHolder.itemViewType)
@@ -96,8 +94,8 @@ class AdapterDelegatesManager<T> {
         } else delegates.keyAt(index)
     }
 
-    fun getDelegateForViewType(viewType: Int): AdapterDelegate<T> {
-        return delegates.get(viewType, fallbackDelegate)
+    private fun getDelegateForViewType(viewType: Int): AdapterDelegate<T> {
+        return delegates.get(viewType)
     }
 
 }

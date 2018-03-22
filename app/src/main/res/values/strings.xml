@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ServerAid</string>
     <string name="copy.search_product">Search your product</string>
+    <string name="copy.product_price">Price: </string>
 </resources>
